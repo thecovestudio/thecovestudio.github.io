@@ -7,6 +7,52 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
+  /* FLOATING WHATSAPP BUTTON */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366; /* Official WhatsApp Green */
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .whatsapp-float:hover {
+    background-color: var(--teal-dark); /* Blends into your palette on hover */
+    transform: scale(1.08) translateY(-3px);
+    box-shadow: 0 8px 25px rgba(45, 92, 79, 0.3);
+  }
+
+  .whatsapp-float svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+  }
+
+  /* Responsive adjustment for smaller screens */
+  @media (max-width: 640px) {
+    .whatsapp-float {
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+    }
+    .whatsapp-float svg {
+      width: 26px;
+      height: 26px;
+    }
+  }
   :root {
     --sage: #7fa894;
     --sage-light: #a8c5b8;
@@ -1337,6 +1383,41 @@
     document.getElementById('contactForm').style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
   }
+  document.addEventListener("DOMContentLoaded", () => {
+  const whatsappBtn = document.getElementById("whatsappBtn");
+  const cursorRing = document.getElementById("cursorRing");
+  const cursor = document.getElementById("cursor");
+
+  if (whatsappBtn && cursorRing && cursor) {
+    whatsappBtn.addEventListener("mouseenter", () => {
+      // Expands your custom cursor ring and changes color to match WhatsApp theme
+      cursorRing.style.width = "60px";
+      cursorRing.style.height = "60px";
+      cursorRing.style.borderColor = "#25d366";
+      cursor.style.background = "#25d366";
+    });
+
+    whatsappBtn.addEventListener("mouseleave", () => {
+      // Reverts cursor settings back to your original Sage CSS variables
+      cursorRing.style.width = "36px";
+      cursorRing.style.height = "36px";
+      cursorRing.style.borderColor = "var(--sage)";
+      cursor.style.background = "var(--sage-deep)";
+    });
+  }
+});
 </script>
+  <!-- FLOATING WHATSAPP BUTTON -->
+<!-- Replace 1234567890 with your complete phone number (with country code, no symbols) -->
+<a href="https://wa.me/1234567890?text=Hi!%20I%27m%20interested%20in%20your%20layered%20wall%20art." 
+   class="whatsapp-float" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   aria-label="Contact us on WhatsApp"
+   id="whatsappBtn">
+  <svg viewBox="0 0 24 24">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.66.986 3.288 1.488 4.654 1.493 5.433.002 9.85-4.413 9.854-9.849.002-2.634-1.02-5.11-2.879-6.97C16.37 1.951 13.9 .925 11.274.925 5.845.925 1.429 5.342 1.425 10.777c-.001 1.488.423 2.942 1.229 4.21l-.461 1.684.457.457 1.687-.442zm12.336-6.11c-.33-.165-1.951-.963-2.251-1.073-.3-.109-.518-.165-.736.165-.218.33-.843 1.073-1.034 1.292-.19.218-.382.245-.712.082-.33-.165-1.392-.513-2.651-1.636-.979-.873-1.639-1.951-1.831-2.28-.192-.33-.02-.507.145-.671.148-.148.33-.382.495-.574.165-.192.22-.33.33-.55.11-.218.055-.41-.028-.574-.082-.164-.736-1.774-1.008-2.43-.266-.64-.537-.553-.736-.563-.19-.01-.41-.01-.629-.01-.218 0-.573.082-.873.41-.3.33-1.146 1.121-1.146 2.734s1.173 3.176 1.337 3.396c.164.22 2.31 3.527 5.596 4.943.781.337 1.391.538 1.866.69.785.249 1.499.214 2.064.129.629-.095 1.951-.798 2.224-1.53.273-.733.273-1.36.191-1.493-.082-.132-.3-.218-.63-.383z"/>
+  </svg>
+</a>
 </body>
 </html>
